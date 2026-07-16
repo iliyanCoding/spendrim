@@ -1,0 +1,120 @@
+---
+import Counter from './Counter.svelte';
+---
+
+<section id="top" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+  <!-- Faint court-line geometry -->
+  <svg
+    class="pointer-events-none absolute inset-0 h-full w-full"
+    viewBox="0 0 1440 800"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <g stroke="var(--color-paper)" stroke-opacity="0.04" fill="none" stroke-width="2">
+      <circle cx="720" cy="400" r="340"></circle>
+      <circle cx="720" cy="400" r="90"></circle>
+      <path d="M-100 60 A 820 820 0 0 1 1540 60"></path>
+      <line x1="0" y1="400" x2="1440" y2="400"></line>
+    </g>
+  </svg>
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
+    <div>
+      <p
+        class="mb-5 inline-flex items-center gap-2 rounded-full border border-edge bg-surface px-3 py-1 text-xs font-medium text-mist"
+        data-reveal
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+        AI cost optimization for engineering teams
+      </p>
+      <h1 class="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl" data-reveal>
+        Cut your AI spend <span class="text-accent">30–50%</span>. Know where every dollar goes.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-mist" data-reveal style="--reveal-delay: 100ms">
+        Spendrim audits, optimizes, and monitors your AI costs — with ticket-level attribution so you finally know
+        which features, devs, and initiatives are burning your budget.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay: 200ms">
+        <a
+          href="#book"
+          class="rounded-lg bg-accent px-6 py-3 font-semibold text-ink transition-colors hover:bg-accent-hot"
+        >
+          Book a Free Waste Audit
+        </a>
+        <a
+          href="#attribution"
+          class="rounded-lg border border-edge px-6 py-3 font-medium text-paper transition-colors hover:border-mist"
+        >
+          See how it works
+        </a>
+      </div>
+      <p class="mt-10 text-sm text-dim" data-reveal style="--reveal-delay: 300ms">
+        <span class="text-xl font-semibold text-paper">
+          <Counter client:visible value={847000} prefix="$" />
+        </span>
+        <span class="ml-2">saved for clients to date</span>
+      </p>
+    </div>
+
+    <!-- Arc: spend curving down into the rim -->
+    <div class="relative" data-reveal style="--reveal-delay: 150ms">
+      <svg viewBox="0 0 560 420" class="w-full" role="img" aria-label="AI spend trajectory curving down into a basketball rim">
+        <defs>
+          <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="var(--color-accent)"></stop>
+            <stop offset="100%" stop-color="var(--color-success)"></stop>
+          </linearGradient>
+        </defs>
+
+        <!-- start marker: current spend -->
+        <g class="tnum" font-family="inherit">
+          <circle cx="60" cy="90" r="5" fill="var(--color-accent)"></circle>
+          <text x="60" y="62" fill="var(--color-mist)" font-size="13">Before</text>
+          <text x="60" y="80" fill="var(--color-paper)" font-size="17" font-weight="600">$68,400/mo</text>
+        </g>
+
+        <!-- the arc -->
+        <path
+          class="arc-path"
+          d="M 60 90 C 220 70, 360 120, 430 300"
+          fill="none"
+          stroke="url(#arcGrad)"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-dasharray="1 10"
+        ></path>
+
+        <!-- ball dropping through -->
+        <g class="arc-ball">
+          <circle cx="430" cy="300" r="11" fill="var(--color-accent)"></circle>
+          <path d="M 419 300 a 11 11 0 0 0 22 0 M 430 289 v 22" stroke="var(--color-ink)" stroke-width="1.5" fill="none"></path>
+        </g>
+
+        <!-- rim + net -->
+        <g stroke-linecap="round">
+          <path d="M 396 318 h 68" stroke="var(--color-accent)" stroke-width="4"></path>
+          <g
+            transform="translate(382 293) scale(2)"
+            stroke="var(--color-paper)"
+            stroke-width="0.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            opacity="0.55"
+            fill="none"
+          >
+            <path d="M17 14.6 L20.5 35.5"></path>
+            <path d="M31 14.6 L27.5 35.5"></path>
+            <path d="M17 14.6 L29.79 21.8 L19.38 28.8 L27.5 35.5"></path>
+            <path d="M31 14.6 L18.21 21.8 L28.62 28.8 L20.5 35.5"></path>
+          </g>
+        </g>
+
+        <!-- end marker: after -->
+        <g>
+          <text x="430" y="398" text-anchor="middle" fill="var(--color-success)" font-size="17" font-weight="600">$31,900/mo</text>
+          <text x="430" y="416" text-anchor="middle" fill="var(--color-mist)" font-size="13">After the sprint · −53%</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>

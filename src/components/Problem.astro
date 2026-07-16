@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const pains = [
+  {
+    icon: 'lucide:file-question',
+    title: 'No attribution',
+    body: "You don't know which tickets or features cost the most. Your invoice is one number; your codebase is a thousand decisions.",
+  },
+  {
+    icon: 'lucide:droplets',
+    title: 'Silent drains',
+    body: 'Cache misses, context bloat, and stale tool results quietly burn budget on every single request — and never show up in a dashboard.',
+  },
+  {
+    icon: 'lucide:siren',
+    title: 'No guardrails',
+    body: 'One bad agent loop can run all night. Without spend limits and alerts, the first warning you get is a five-figure surprise.',
+  },
+];
+---
+
+<section id="problem" class="border-t border-edge py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-reveal>The problem</p>
+    <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
+      Your AI bill is a black box.
+    </h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        pains.map((p, i) => (
+          <div
+            class="rounded-xl border border-edge bg-surface p-7"
+            data-reveal
+            style={`--reveal-delay: ${i * 100}ms`}
+          >
+            <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-raised text-accent">
+              <Icon name={p.icon} class="h-5 w-5" />
+            </div>
+            <h3 class="mt-5 text-lg font-semibold">{p.title}</h3>
+            <p class="mt-2 leading-relaxed text-mist">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

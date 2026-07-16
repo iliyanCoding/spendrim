@@ -1,0 +1,41 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="book" class="border-t border-edge py-20 sm:py-28">
+  <div class="mx-auto max-w-4xl px-5 text-center sm:px-8">
+    <h2 class="text-3xl font-semibold tracking-tight sm:text-5xl" data-reveal>
+      Stop bleeding on AI costs.
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-mist" data-reveal style="--reveal-delay: 100ms">
+      Book a free 20-minute waste audit call. You'll leave with at least one concrete number — whether or not we ever
+      work together.
+    </p>
+
+    <!--
+      Cal.com embed placeholder.
+      To go live, replace the card below with the official inline embed:
+      https://cal.com/docs/embed — point it at your real event link.
+    -->
+    <div
+      class="mx-auto mt-10 max-w-lg rounded-xl border border-edge bg-surface p-8"
+      data-reveal
+      style="--reveal-delay: 200ms"
+    >
+      <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-raised text-accent">
+        <Icon name="lucide:calendar-clock" class="h-6 w-6" />
+      </div>
+      <p class="mt-4 font-semibold">Free Waste Audit — 20 min</p>
+      <p class="mt-1 text-sm text-mist">No deck, no pitch. We look at your usage and point at the waste.</p>
+      <a
+        href="https://cal.com/spendrim/waste-audit"
+        target="_blank"
+        rel="noopener"
+        class="mt-6 inline-block w-full rounded-lg bg-accent px-6 py-3 font-semibold text-ink transition-colors hover:bg-accent-hot"
+      >
+        Pick a time
+      </a>
+      <p class="mt-3 text-xs text-dim">or email <a href="mailto:hello@spendrim.com" class="underline hover:text-paper">hello@spendrim.com</a></p>
+    </div>
+  </div>
+</section>

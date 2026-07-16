@@ -1,0 +1,36 @@
+---
+import Accordion from './Accordion.svelte';
+
+const items = [
+  {
+    q: 'How is the sprint priced?',
+    a: 'Fixed fee, quoted after the free waste audit and tied to your current spend — not hourly. If we don’t hit the agreed savings percentage within 30 days of handoff, you don’t pay. The audit call itself is free and carries no obligation.',
+  },
+  {
+    q: 'Do you need access to our prompts and data?',
+    a: 'We work from usage metadata — token counts, cache hit rates, model and endpoint mix, request traces — not your training data or customer content. Where prompt inspection is needed, it happens in your environment under your access controls, and we sign an NDA before the audit.',
+  },
+  {
+    q: 'Which providers do you support?',
+    a: 'We’re model-agnostic: Claude (Anthropic), OpenAI, and Gemini, plus open-weight models behind vLLM or Bedrock. The levers — caching, compaction, trimming, guardrails — apply anywhere tokens are billed.',
+  },
+  {
+    q: 'How much engineering effort does this take from our team?',
+    a: 'Week 2 is done-for-you: we open the PRs, your team reviews them. Most clients budget a few hours of review per week plus one 30-minute sync. Attribution instrumentation is a thin middleware layer, not a re-architecture.',
+  },
+  {
+    q: 'How does the guarantee actually work?',
+    a: 'In week 1 we sign off on a measured baseline and a target savings percentage. Thirty days after handoff, we compare like-for-like usage against that baseline. Hit the target, the fee stands; miss it, you don’t pay. Terms are in the engagement letter — no asterisks.',
+  },
+];
+---
+
+<section id="faq" class="border-t border-edge py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-reveal>FAQ</p>
+    <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>Fair questions.</h2>
+    <div class="mt-10" data-reveal style="--reveal-delay: 100ms">
+      <Accordion client:visible items={items} />
+    </div>
+  </div>
+</section>

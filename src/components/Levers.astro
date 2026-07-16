@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const levers = [
+  {
+    icon: 'lucide:database-zap',
+    title: 'Prompt Caching Audit',
+    body: "Find what's breaking your cache. One reordered system prompt or a timestamp in the wrong place can 10x your input costs.",
+  },
+  {
+    icon: 'lucide:fold-vertical',
+    title: 'Context Compaction',
+    body: 'Prune stale tool results and redundant file reads before they compound. Agents carry less, think the same, cost far less.',
+  },
+  {
+    icon: 'lucide:scissors',
+    title: 'Context Trimming',
+    body: 'Kill redundant agent-loop calls — the retries, re-reads, and "let me check that again" cycles that quietly triple run costs.',
+  },
+  {
+    icon: 'lucide:shield-alert',
+    title: 'Budget Guardrails',
+    body: 'Per-ticket and per-team spend limits with Slack alerts before you overspend — not an invoice autopsy after.',
+  },
+];
+---
+
+<section id="levers" class="border-t border-edge py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-reveal>The levers</p>
+    <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
+      Four levers. Every one measured before and after.
+    </h2>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        levers.map((l, i) => (
+          <div
+            class="group rounded-xl border border-edge bg-surface p-7 transition-colors hover:border-accent/40"
+            data-reveal
+            style={`--reveal-delay: ${i * 80}ms`}
+          >
+            <div class="flex items-center gap-4">
+              <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-raised text-accent">
+                <Icon name={l.icon} class="h-5 w-5" />
+              </div>
+              <h3 class="text-lg font-semibold">{l.title}</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-mist">{l.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
