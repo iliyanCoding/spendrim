@@ -1,0 +1,79 @@
+---
+interface AccordionItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items?: AccordionItem[];
+}
+
+const { items = [] } = Astro.props;
+---
+
+<div class="divide-y divide-edge border-y border-edge js-accordion" data-accordion-ready="false">
+  {
+    items.map((item, i) => (
+      <div>
+        <button
+          type="button"
+          class="flex w-full items-center justify-between gap-6 py-5 text-left transition-colors hover:text-accent-hot"
+          aria-expanded={i === 0 ? 'true' : 'false'}
+          data-accordion-trigger
+          data-index={i}
+        >
+          <span class="text-base font-medium sm:text-lg">{item.q}</span>
+          <svg
+            class:list={['h-5 w-5 shrink-0 text-mist transition-transform duration-300', i === 0 && 'rotate-45']}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            data-accordion-icon
+          >
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+        </button>
+        <div
+          class="grid transition-[grid-template-rows] duration-300 ease-out"
+          style={`grid-template-rows: ${i === 0 ? '1fr' : '0fr'}`}
+          data-accordion-panel
+        >
+          <div class="overflow-hidden">
+            <p class="max-w-2xl pb-6 text-mist leading-relaxed">{item.a}</p>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll('.js-accordion[data-accordion-ready="false"]').forEach((accordion) => {
+    accordion.dataset.accordionReady = 'true';
+
+    const triggers = Array.from(accordion.querySelectorAll('[data-accordion-trigger]'));
+    const panels = Array.from(accordion.querySelectorAll('[data-accordion-panel]'));
+    const icons = Array.from(accordion.querySelectorAll('[data-accordion-icon]'));
+    let openIndex = triggers.length > 0 ? 0 : -1;
+
+    const update = () => {
+      triggers.forEach((trigger, index) => {
+        const isOpen = openIndex === index;
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        panels[index].style.gridTemplateRows = isOpen ? '1fr' : '0fr';
+        icons[index].classList.toggle('rotate-45', isOpen);
+      });
+    };
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        openIndex = openIndex === index ? -1 : index;
+        update();
+      });
+    });
+
+    update();
+  });
+</script>

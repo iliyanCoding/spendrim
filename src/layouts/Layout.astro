@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'Spendrim — Cut your AI spend 30–50%',
-  description = 'Spendrim audits, optimizes, and monitors your AI costs — with ticket-level attribution so you finally know which features, devs, and initiatives are burning your budget.',
+  title = 'Spendrim - Cut your AI spend 30–50%',
+  description = 'At Spendrim we audit, optimize, and monitor your AI costs - with ticket-level attribution so you finally know which features, devs, and initiatives are burning your budget.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -27,12 +27,12 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
-      name: 'AI Spend Reset — 21-Day Sprint',
+      name: 'AI Spend Reset - 30-Day Sprint',
       provider: { '@type': 'Organization', name: 'Spendrim' },
       description:
-        'A 21-day sprint that cuts AI/LLM costs 30–50% through prompt caching audits, context compaction, context trimming, and budget guardrails — with ticket-level spend attribution.',
+        'A 30-day sprint that cuts AI/LLM up to 40% through prompt caching audits, context compaction, context trimming, and budget guardrails.',
       serviceType: 'AI cost optimization',
-      areaServed: 'Worldwide',
+      areaSekved: 'Worldwide',
     },
   ],
 };
