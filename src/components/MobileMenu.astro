@@ -1,0 +1,76 @@
+---
+interface MenuLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links?: MenuLink[];
+}
+
+const { links = [] } = Astro.props;
+---
+
+<div class="md:hidden js-mobile-menu" data-mobile-menu-ready="false">
+  <button
+    type="button"
+    class="relative z-50 flex h-10 w-10 items-center justify-center rounded-md text-paper"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu-panel"
+    data-mobile-menu-toggle
+  >
+    <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16" data-mobile-icon-open />
+      <path d="M6 6l12 12M18 6L6 18" class="hidden" data-mobile-icon-close />
+    </svg>
+  </button>
+
+  <div id="mobile-menu-panel" class="fixed inset-0 z-40 hidden bg-ink/95 backdrop-blur-sm" data-mobile-menu-panel>
+    <nav class="flex h-full flex-col items-center justify-center gap-8">
+      {
+        links.map((link) => (
+          <a href={link.href} class="text-2xl font-medium text-paper transition-colors hover:text-accent" data-mobile-menu-link>
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="#book"
+        class="mt-4 rounded-lg bg-accent px-6 py-3 text-lg font-semibold text-ink transition-colors hover:bg-accent-hot"
+        data-mobile-menu-link
+      >
+        Book a Free Waste Audit
+      </a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.js-mobile-menu[data-mobile-menu-ready="false"]').forEach((root) => {
+    root.dataset.mobileMenuReady = 'true';
+
+    const button = root.querySelector('[data-mobile-menu-toggle]');
+    const panel = root.querySelector('[data-mobile-menu-panel]');
+    const openIcon = root.querySelector('[data-mobile-icon-open]');
+    const closeIcon = root.querySelector('[data-mobile-icon-close]');
+    const links = Array.from(root.querySelectorAll('[data-mobile-menu-link]'));
+
+    let open = false;
+    const setOpen = (nextOpen) => {
+      open = nextOpen;
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      panel.classList.toggle('hidden', !open);
+      openIcon.classList.toggle('hidden', open);
+      closeIcon.classList.toggle('hidden', !open);
+      document.body.classList.toggle('overflow-hidden', open);
+    };
+
+    button.addEventListener('click', () => setOpen(!open));
+    links.forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && open) setOpen(false);
+    });
+  });
+</script>

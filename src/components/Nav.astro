@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import MobileMenu from './MobileMenu.svelte';
+import MobileMenu from './MobileMenu.astro';
 
 const links = [
   { href: '#problem', label: 'The problem' },
@@ -31,6 +31,6 @@ const links = [
       </a>
     </div>
 
-    <MobileMenu client:media="(max-width: 767px)" links={links} />
+    <MobileMenu links={links} />
   </div>
 </header>

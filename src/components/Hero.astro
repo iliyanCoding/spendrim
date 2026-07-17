@@ -1,5 +1,4 @@
 ---
-import Counter from './Counter.svelte';
 ---
 
 <section id="top" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
@@ -20,18 +19,11 @@ import Counter from './Counter.svelte';
 
   <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
     <div>
-      <p
-        class="mb-5 inline-flex items-center gap-2 rounded-full border border-edge bg-surface px-3 py-1 text-xs font-medium text-mist"
-        data-reveal
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
-        AI cost optimization for engineering teams
-      </p>
       <h1 class="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl" data-reveal>
         Cut your AI spend <span class="text-accent">30–50%</span>. Know where every dollar goes.
       </h1>
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-mist" data-reveal style="--reveal-delay: 100ms">
-        Spendrim audits, optimizes, and monitors your AI costs — with ticket-level attribution so you finally know
+        Spendrim audits, optimizes, and monitors your AI costs - with ticket-level attribution so you finally know
         which features, devs, and initiatives are burning your budget.
       </p>
       <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay: 200ms">
@@ -48,12 +40,6 @@ import Counter from './Counter.svelte';
           See how it works
         </a>
       </div>
-      <p class="mt-10 text-sm text-dim" data-reveal style="--reveal-delay: 300ms">
-        <span class="text-xl font-semibold text-paper">
-          <Counter client:visible value={847000} prefix="$" />
-        </span>
-        <span class="ml-2">saved for clients to date</span>
-      </p>
     </div>
 
     <!-- Arc: spend curving down into the rim -->

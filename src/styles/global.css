@@ -40,7 +40,7 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Scroll reveals — elements opt in with data-reveal */
+/* Scroll reveals - elements opt in with data-reveal */
 [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
