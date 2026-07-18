@@ -3,62 +3,14 @@ interface Props {
   value?: number;
   prefix?: string;
   suffix?: string;
-  duration?: number;
   decimals?: number;
 }
 
-const { value = 0, prefix = '', suffix = '', duration = 1600, decimals = 0 } = Astro.props;
-const initial = `${prefix}${(0).toFixed(decimals)}${suffix}`;
+const { value = 0, prefix = '', suffix = '', decimals = 0 } = Astro.props;
+const formatted = `${prefix}${value.toLocaleString('en-US', {
+  minimumFractionDigits: decimals,
+  maximumFractionDigits: decimals,
+})}${suffix}`;
 ---
 
-<span
-  class="tnum js-counter"
-  data-counter-ready="false"
-  data-value={value}
-  data-prefix={prefix}
-  data-suffix={suffix}
-  data-duration={duration}
-  data-decimals={decimals}
->{initial}</span>
-
-<script>
-  const formatCounter = (value, prefix, suffix, decimals) =>
-    `${prefix}${value.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`;
-
-  document.querySelectorAll('.js-counter[data-counter-ready="false"]').forEach((el) => {
-    el.dataset.counterReady = 'true';
-
-    const value = Number(el.dataset.value ?? '0');
-    const prefix = el.dataset.prefix ?? '';
-    const suffix = el.dataset.suffix ?? '';
-    const duration = Number(el.dataset.duration ?? '1600');
-    const decimals = Number(el.dataset.decimals ?? '0');
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      el.textContent = formatCounter(value, prefix, suffix, decimals);
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0]?.isIntersecting) return;
-        io.disconnect();
-
-        const start = performance.now();
-        const tick = (now) => {
-          const t = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(2, -10 * t);
-          const current = value * (t === 1 ? 1 : eased);
-          el.textContent = formatCounter(current, prefix, suffix, decimals);
-          if (t < 1) requestAnimationFrame(tick);
-        };
-
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 }
-    );
-
-    io.observe(el);
-  });
-</script>
+<span class="num">{formatted}</span>

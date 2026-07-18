@@ -1,31 +1,30 @@
 ---
-import { Icon } from 'astro-icon/components';
+import SectionLabel from './SectionLabel.astro';
 
 const bonuses = [
-  { icon: 'lucide:layers', title: 'Batch API review', body: 'Move offline workloads to batch pricing - often a flat 50% cut on eligible traffic.' },
-  { icon: 'lucide:minimize-2', title: 'Output compression', body: 'Tighter schemas and shorter completions where verbosity adds nothing but tokens.' },
-  { icon: 'lucide:graduation-cap', title: 'Developer training', body: 'Your team learns the cost-aware patterns so the savings stick after we leave.' },
-  { icon: 'lucide:activity', title: '30-day monitoring', body: 'We watch the dashboard after launch and flag regressions before they compound.' },
-  { icon: 'lucide:repeat', title: 'Discounted quarterly audits', body: 'Models and usage change. Keep the waste map current at a returning-client rate.' },
+  { title: 'Batch API review', body: 'Move offline workloads to batch pricing — often a flat 50% cut on eligible traffic.' },
+  { title: 'Output compression', body: 'Tighter schemas and shorter completions where verbosity adds nothing but tokens.' },
+  { title: 'Developer training', body: 'Your team learns the cost-aware patterns so the savings stick after we leave.' },
+  { title: '30-day monitoring', body: 'We watch the dashboard after launch and flag regressions before they compound.' },
+  { title: 'Discounted quarterly audits', body: 'Models and usage change. Keep the waste map current at a returning-client rate.' },
 ];
 ---
 
-<section id="bonuses" class="border-t border-edge py-20 sm:py-28">
-  <div class="mx-auto max-w-6xl px-5 sm:px-8">
-    <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-reveal>Included</p>
-    <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
-      Every sprint ships with the assists.
+<section id="bonuses" class="border-t border-rule py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl px-6 sm:px-10">
+    <SectionLabel index="05" label="Also included" />
+    <h2 class="display mt-8 max-w-2xl text-[2.25rem] leading-[1.05] sm:text-[3rem]">
+      Every sprint ships with <em class="display-italic">the assists</em>.
     </h2>
-    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+    <div class="mt-14 grid gap-x-16 sm:grid-cols-2">
       {
         bonuses.map((b, i) => (
-          <div class="flex items-start gap-4 rounded-xl border border-edge bg-surface p-6" data-reveal style={`--reveal-delay: ${i * 60}ms`}>
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-raised text-accent">
-              <Icon name={b.icon} class="h-4.5 w-4.5" />
-            </div>
+          <div class="flex items-baseline gap-5 border-t border-rule py-6">
+            <span class="num text-sm text-accent">0{i + 1}</span>
             <div>
-              <h3 class="font-semibold">{b.title}</h3>
-              <p class="mt-1.5 text-sm leading-relaxed text-mist">{b.body}</p>
+              <h3 class="display text-xl">{b.title}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{b.body}</p>
             </div>
           </div>
         ))
