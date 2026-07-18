@@ -20,7 +20,17 @@
   <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
     <div>
       <h1 class="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl" data-reveal>
-        Cut your AI spend <span class="text-accent">30–50%</span>. Know where every dollar goes.
+        Cut your AI spend <span class="text-accent">30–50%</span>. Know where <span class="word-every"
+          >every<svg class="word-every-line" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true">
+            <path
+              d="M3 9 C 20 3, 40 11, 60 7 S 100 3, 117 8"
+              pathLength="100"
+              fill="none"
+              stroke="var(--color-accent)"
+              stroke-width="4"
+              stroke-linecap="round"></path>
+          </svg></span
+        > dollar goes.
       </h1>
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-mist" data-reveal style="--reveal-delay: 100ms">
         Spendrim audits, optimizes, and monitors your AI costs - with ticket-level attribution so you finally know
@@ -109,3 +119,39 @@
     </div>
   </div>
 </section>
+
+<style>
+  .word-every {
+    position: relative;
+    display: inline-block;
+    font-style: italic;
+  }
+
+  .word-every-line {
+    position: absolute;
+    left: -2%;
+    bottom: -0.1em;
+    width: 104%;
+    height: 0.22em;
+    overflow: visible;
+  }
+
+  .word-every-line path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: every-draw 0.6s ease-out 0.8s forwards;
+  }
+
+  @keyframes every-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word-every-line path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
