@@ -1,36 +1,37 @@
 ---
+import SectionLabel from './SectionLabel.astro';
+
 const rows = [
-  { ticket: 'ENG-1482', feature: 'PDF ingestion agent', dev: 'mara', runs: 214, cost: '$4,812', pct: 92, flag: true },
-  { ticket: 'ENG-1503', feature: 'Support autoresponder', dev: 'dev_k', runs: 1861, cost: '$2,304', pct: 44 },
-  { ticket: 'ENG-1477', feature: 'Search reranking', dev: 'jonas', runs: 903, cost: '$1,187', pct: 23 },
-  { ticket: 'ENG-1519', feature: 'Changelog summarizer', dev: 'mara', runs: 122, cost: '$391', pct: 8 },
-  { ticket: 'ENG-1467', feature: 'Onboarding copilot', dev: 'ana', runs: 388, cost: '$246', pct: 5 },
+  { ticket: 'ENG-1482', feature: 'PDF ingestion agent', dev: 'mara', runs: 214, cost: '$4,812', flag: true },
+  { ticket: 'ENG-1503', feature: 'Support autoresponder', dev: 'dev_k', runs: 1861, cost: '$2,304' },
+  { ticket: 'ENG-1477', feature: 'Search reranking', dev: 'jonas', runs: 903, cost: '$1,187' },
+  { ticket: 'ENG-1519', feature: 'Changelog summarizer', dev: 'mara', runs: 122, cost: '$391' },
+  { ticket: 'ENG-1467', feature: 'Onboarding copilot', dev: 'ana', runs: 388, cost: '$246' },
 ];
 ---
 
-<section id="attribution" class="border-t border-edge py-20 sm:py-28">
-  <div class="mx-auto max-w-6xl px-5 sm:px-8">
-    <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
+<section id="attribution" class="border-t border-rule py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl px-6 sm:px-10">
+    <SectionLabel index="02" label="The core wedge" />
+
+    <div class="mt-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-reveal>The core wedge</p>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
-          Ticket-ID ↔ Agent-Run attribution
+        <h2 class="display max-w-md text-[2.25rem] leading-[1.05] sm:text-[3rem]">
+          Every run tied to the <em class="display-italic">ticket</em> that triggered it.
         </h2>
-        <p class="mt-5 text-lg leading-relaxed text-mist" data-reveal style="--reveal-delay: 100ms">
-          Every agent run gets tagged to the ticket that triggered it. See exact $ spend per ticket, per dev, per
-          feature - so cost conversations stop being guesses and start being line items.
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
+          See exact spend per ticket, per developer, per feature — so cost conversations stop being
+          guesses and start being line items.
         </p>
-        <ul class="mt-7 space-y-3 text-mist" data-reveal style="--reveal-delay: 200ms">
+        <ul class="mt-8 space-y-3.5">
           {
             [
               'Which features actually pay for their inference',
               'Which agent loops re-read the same context 40 times',
               'Which initiatives to kill, cap, or double down on',
             ].map((t) => (
-              <li class="flex items-start gap-3">
-                <svg class="mt-1 h-4 w-4 shrink-0 text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
+              <li class="flex items-baseline gap-3 border-b border-rule pb-3.5 text-ink">
+                <span class="text-accent">&mdash;</span>
                 <span>{t}</span>
               </li>
             ))
@@ -38,55 +39,45 @@ const rows = [
         </ul>
       </div>
 
-      <!-- Mock dashboard -->
-      <div class="rounded-xl border border-edge bg-surface shadow-2xl shadow-black/40" data-reveal style="--reveal-delay: 150ms">
-        <div class="flex items-center justify-between border-b border-edge px-5 py-3.5">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-raised"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-raised"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-raised"></span>
-          </div>
-          <span class="text-xs font-medium text-dim">spend by ticket · last 30 days</span>
+      <!-- Ledger table -->
+      <figure>
+        <div class="flex items-baseline justify-between border-b-2 border-ink pb-2">
+          <span class="label text-ink-faint">Spend by ticket</span>
+          <span class="num text-xs text-ink-faint">last 30 days</span>
         </div>
         <div class="overflow-x-auto">
-          <table class="w-full min-w-[480px] text-left text-sm">
+          <table class="w-full min-w-[440px] text-left text-sm">
             <thead>
-              <tr class="border-b border-edge text-xs uppercase tracking-wider text-dim">
-                <th class="px-5 py-3 font-medium">Ticket</th>
-                <th class="px-3 py-3 font-medium">Feature</th>
-                <th class="px-3 py-3 font-medium">Dev</th>
-                <th class="px-3 py-3 text-right font-medium">Runs</th>
-                <th class="px-5 py-3 text-right font-medium">Spend</th>
+              <tr class="label text-ink-faint">
+                <th class="py-2.5 pr-3 font-medium" style="font-size:0.62rem">Ticket</th>
+                <th class="py-2.5 pr-3 font-medium" style="font-size:0.62rem">Feature</th>
+                <th class="py-2.5 pr-3 font-medium" style="font-size:0.62rem">Dev</th>
+                <th class="py-2.5 pr-3 text-right font-medium" style="font-size:0.62rem">Runs</th>
+                <th class="py-2.5 text-right font-medium" style="font-size:0.62rem">Spend</th>
               </tr>
             </thead>
-            <tbody class="tnum">
+            <tbody>
               {
                 rows.map((r) => (
-                  <tr class="border-b border-edge/60 last:border-0">
-                    <td class="px-5 py-3.5 font-medium text-paper">{r.ticket}</td>
-                    <td class="px-3 py-3.5 text-mist">{r.feature}</td>
-                    <td class="px-3 py-3.5 text-mist">@{r.dev}</td>
-                    <td class="px-3 py-3.5 text-right text-mist">{r.runs.toLocaleString('en-US')}</td>
-                    <td class="px-5 py-3.5 text-right">
-                      <span class={r.flag ? 'font-semibold text-accent' : 'text-paper'}>{r.cost}</span>
-                      <div class="mt-1.5 ml-auto h-1 w-20 overflow-hidden rounded-full bg-raised">
-                        <div
-                          class={`h-full rounded-full ${r.flag ? 'bg-accent' : 'bg-mist/50'}`}
-                          style={`width: ${r.pct}%`}
-                        />
-                      </div>
-                    </td>
+                  <tr class="border-t border-rule">
+                    <td class="num py-3 pr-3 text-ink">{r.ticket}</td>
+                    <td class="py-3 pr-3 text-ink-soft">{r.feature}</td>
+                    <td class="num py-3 pr-3 text-ink-soft">@{r.dev}</td>
+                    <td class="num py-3 pr-3 text-right text-ink-soft">{r.runs.toLocaleString('en-US')}</td>
+                    <td class={`num py-3 text-right ${r.flag ? 'font-semibold text-accent' : 'text-ink'}`}>{r.cost}</td>
                   </tr>
                 ))
               }
             </tbody>
           </table>
         </div>
-        <div class="flex items-center gap-2 border-t border-edge px-5 py-3 text-xs text-dim">
-          <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-          ENG-1482 flagged: 78% of spend from cache-busting system prompt
-        </div>
-      </div>
+        <figcaption class="mt-3 flex items-baseline gap-3 border-t border-rule pt-3">
+          <span class="num text-xs text-accent">Table 1</span>
+          <span class="text-xs leading-relaxed text-ink-faint">
+            Sample view. <span class="num text-ink">ENG-1482</span> flagged — <span class="num text-accent">78%</span> of its spend traced to a cache-busting system prompt.
+          </span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>

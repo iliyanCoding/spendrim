@@ -1,5 +1,7 @@
 ---
-import '@fontsource-variable/inter';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 
 interface Props {
@@ -69,29 +71,5 @@ const jsonLd = {
   </head>
   <body>
     <slot />
-
-    <script>
-      // Scroll-triggered reveals for [data-reveal] elements
-      const reveal = () => {
-        const els = document.querySelectorAll('[data-reveal]');
-        if (!('IntersectionObserver' in window)) {
-          els.forEach((el) => el.classList.add('is-revealed'));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                io.unobserve(entry.target);
-              }
-            }
-          },
-          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-        );
-        els.forEach((el) => io.observe(el));
-      };
-      reveal();
-    </script>
   </body>
 </html>

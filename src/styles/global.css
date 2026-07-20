@@ -1,102 +1,92 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Palette */
-  --color-ink: #0a0a0a;
-  --color-surface: #121214;
-  --color-raised: #1a1a1e;
-  --color-paper: #fafafa;
-  --color-mist: #a1a1aa;
-  --color-dim: #6b6b74;
-  --color-edge: rgba(250, 250, 250, 0.08);
-  --color-accent: #f26b2a;
-  --color-accent-hot: #ff7d3b;
-  --color-success: #4ade80;
+  /* ─────────────────────────────────────────────
+     LIGHT EDITORIAL LEDGER
+     Ink on warm paper. One rust accent. Thin rules.
+     ───────────────────────────────────────────── */
 
-  /* Type */
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Paper & panels */
+  --color-paper: #f3eee2; /* warm cream page */
+  --color-panel: #ede6d6; /* slightly deeper inset */
+  --color-panel-2: #e6ddca; /* deepest, for table stripes */
+
+  /* Ink (warm near-black, not pure black) */
+  --color-ink: #1d1712; /* primary text */
+  --color-ink-soft: #574e42; /* secondary text */
+  --color-ink-faint: #8a7f6d; /* tertiary / labels */
+
+  /* Rules — the structural language of a ledger */
+  --color-rule: rgba(29, 23, 18, 0.16);
+  --color-rule-strong: rgba(29, 23, 18, 0.42);
+
+  /* Accent — rust, used sparingly */
+  --color-accent: #b8442a;
+  --color-accent-deep: #8f3018;
+  --color-positive: #3c6048; /* muted forest for savings */
+
+  /* Type — a coherent IBM Plex system: engineered, corporate, precise.
+     Headings + body: IBM Plex Sans. Figures: IBM Plex Mono. */
+  --font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', 'Menlo', monospace;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-ink);
+  background-color: var(--color-paper);
 }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-paper);
-  background-color: var(--color-ink);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-paper);
 }
 
-/* Numbers align in tables and counters */
+/* Display — IBM Plex Sans, tightened for headline confidence. */
+.display {
+  font-family: var(--font-sans);
+  font-weight: 560;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+
+/* Emphasis inside headings — weight + accent, not italic (grotesk stays upright). */
+.display-italic {
+  font-style: normal;
+  font-weight: 620;
+  color: var(--color-accent);
+}
+
+/* Small-caps editorial label */
+.label {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* Ledger figures — monospaced tabular numerals */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.02em;
+}
+
 .tnum {
   font-variant-numeric: tabular-nums;
-}
-
-/* Scroll reveals - elements opt in with data-reveal */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-[data-reveal].is-revealed {
-  opacity: 1;
-  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .arc-path,
-  .arc-ball {
-    animation: none !important;
-    stroke-dashoffset: 0 !important;
-    opacity: 1 !important;
-  }
-}
-
-/* Hero arc draw-on */
-.arc-path {
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-  animation: arc-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-}
-
-.arc-ball {
-  opacity: 0;
-  animation: ball-in 0.5s ease-out 1.7s forwards;
-}
-
-@keyframes arc-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes ball-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }

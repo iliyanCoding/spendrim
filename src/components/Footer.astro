@@ -4,17 +4,22 @@ import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-edge py-10">
-  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 sm:flex-row sm:px-8">
-    <div class="flex items-center gap-2.5">
-      <Logo class="h-6 w-6" />
-      <span class="font-semibold">Spendrim</span>
-      <span class="text-sm text-dim">© {year}</span>
+<footer class="border-t-2 border-ink py-10">
+  <div class="mx-auto max-w-5xl px-6 sm:px-10">
+    <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+      <div class="flex items-center gap-2.5">
+        <Logo class="h-6 w-6" />
+        <span class="display text-lg" style="font-weight:520">Spendrim</span>
+        <span class="num text-sm text-ink-faint">&copy; {year}</span>
+      </div>
+      <div class="flex items-center gap-7 text-sm text-ink-soft">
+        <a href="mailto:hello@spendrim.com" class="transition-colors hover:text-accent">hello@spendrim.com</a>
+        <a href="https://x.com/spendrim" target="_blank" rel="noopener" class="transition-colors hover:text-accent">X</a>
+        <a href="https://linkedin.com/company/spendrim" target="_blank" rel="noopener" class="transition-colors hover:text-accent">LinkedIn</a>
+      </div>
     </div>
-    <div class="flex items-center gap-6 text-sm text-mist">
-      <a href="mailto:hello@spendrim.com" class="transition-colors hover:text-paper">hello@spendrim.com</a>
-      <a href="https://x.com/spendrim" target="_blank" rel="noopener" class="transition-colors hover:text-paper">X</a>
-      <a href="https://linkedin.com/company/spendrim" target="_blank" rel="noopener" class="transition-colors hover:text-paper">LinkedIn</a>
-    </div>
+    <p class="label mt-8 text-ink-faint/70">
+      Set in Fraunces &amp; Newsreader &middot; Made for teams who want the receipts
+    </p>
   </div>
 </footer>
