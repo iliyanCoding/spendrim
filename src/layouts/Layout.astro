@@ -2,6 +2,9 @@
 import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/source-serif-4/500.css';
+import '@fontsource/source-serif-4/600.css';
+import '@fontsource/source-serif-4/700.css';
 import '../styles/global.css';
 
 interface Props {
@@ -10,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = 'Spendrim - Cut your AI spend 30–50%',
-  description = 'At Spendrim we audit, optimize, and monitor your AI costs - with ticket-level attribution so you finally know which features, devs, and initiatives are burning your budget.',
+  title = 'Spendrim - AI Cost Optimization & Observability',
+  description = 'Spendrim finds exactly where AI spend disappears, fixes it in a 30-day sprint, and keeps watching after we leave, so the savings stick.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -25,7 +28,7 @@ const jsonLd = {
       name: 'Spendrim',
       url: Astro.site?.toString(),
       logo: new URL('/favicon.svg', Astro.site).toString(),
-      email: 'hello@spendrim.com',
+      email: 'contact@spendrim.com',
     },
     {
       '@type': 'Service',

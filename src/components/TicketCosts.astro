@@ -1,0 +1,196 @@
+---
+import SectionLabel from './SectionLabel.astro';
+
+type Type = 'bug' | 'story' | 'task';
+type Status = 'To Do' | 'In Progress' | 'Done';
+type Priority = 'Highest' | 'High' | 'Medium' | 'Low';
+
+interface Ticket {
+  key: string;
+  type: Type;
+  summary: string;
+  status: Status;
+  priority: Priority;
+  assignee: string;
+  avatarColor: string;
+  cost: string;
+  costNote?: string;
+  flagged: boolean;
+}
+
+const tickets: Ticket[] = [
+  {
+    key: 'ENG-449',
+    type: 'bug',
+    summary: 'Agent loop retries without backoff, burns tokens on every failure',
+    status: 'To Do',
+    priority: 'Highest',
+    assignee: 'R.K.',
+    avatarColor: '#8777d9',
+    cost: '$3,420/mo',
+    costNote: 'trending up',
+    flagged: true,
+  },
+  {
+    key: 'ENG-482',
+    type: 'bug',
+    summary: 'GPT-4 used for FAQ classification instead of a small model',
+    status: 'To Do',
+    priority: 'High',
+    assignee: 'R.K.',
+    avatarColor: '#8777d9',
+    cost: '$2,180/mo',
+    costNote: 'flagged',
+    flagged: true,
+  },
+  {
+    key: 'ENG-471',
+    type: 'task',
+    summary: 'Enable prompt caching on the support-bot pipeline',
+    status: 'In Progress',
+    priority: 'Medium',
+    assignee: 'J.M.',
+    avatarColor: '#00a3bf',
+    cost: '$640/mo',
+    costNote: 'flagged',
+    flagged: true,
+  },
+  {
+    key: 'ENG-455',
+    type: 'story',
+    summary: 'Migrate doc-summarizer from GPT-4 to Claude Haiku',
+    status: 'Done',
+    priority: 'Low',
+    assignee: 'S.T.',
+    avatarColor: '#e2733f',
+    cost: '$95/mo',
+    costNote: 'was $890/mo',
+    flagged: false,
+  },
+  {
+    key: 'ENG-438',
+    type: 'task',
+    summary: 'Trim system prompt context on the onboarding flow',
+    status: 'Done',
+    priority: 'Low',
+    assignee: 'J.M.',
+    avatarColor: '#00a3bf',
+    cost: '$120/mo',
+    costNote: 'was $410/mo',
+    flagged: false,
+  },
+  {
+    key: 'ENG-430',
+    type: 'story',
+    summary: 'Add per-feature spend attribution middleware',
+    status: 'In Progress',
+    priority: 'Medium',
+    assignee: 'S.T.',
+    avatarColor: '#e2733f',
+    cost: '$0/mo',
+    costNote: 'instrumentation',
+    flagged: false,
+  },
+];
+
+const typeIcon: Record<Type, { bg: string; label: string }> = {
+  bug: { bg: '#e2483d', label: 'B' },
+  story: { bg: '#65ba43', label: 'S' },
+  task: { bg: '#4bade8', label: 'T' },
+};
+
+const statusStyle: Record<Status, string> = {
+  'To Do': 'bg-[#dfe1e6] text-[#44546f]',
+  'In Progress': 'bg-[#deebff] text-[#0052cc]',
+  Done: 'bg-[#e3fcef] text-[#006644]',
+};
+
+const priorityStyle: Record<Priority, { color: string; glyph: string }> = {
+  Highest: { color: '#e2483d', glyph: '▲▲' },
+  High: { color: '#e2733f', glyph: '▲' },
+  Medium: { color: '#e2b203', glyph: '▬' },
+  Low: { color: '#65ba43', glyph: '▼' },
+};
+---
+
+<section id="tickets" class="border-t border-b border-rule bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl px-6 sm:px-10">
+    <SectionLabel index="02" label="Ticket-level attribution" />
+    <h2 class="display mt-8 max-w-2xl text-[2.25rem] leading-[1.05] sm:text-[3rem]">
+      Every ticket has a dollar figure. You just can't see it yet.
+    </h2>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+      We tie AI spend back to the ticket that caused it, so cost review looks like your backlog, not a
+      random finance spreadsheet.
+    </p>
+
+    <div class="mt-14 overflow-hidden rounded-lg border border-rule">
+      <div class="hidden items-center gap-4 bg-[#f4f5f7] px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-ink-faint sm:flex">
+        <span class="w-16">Type</span>
+        <span class="w-20">Key</span>
+        <span class="flex-1">Summary</span>
+        <span class="w-28">Status</span>
+        <span class="w-24">Assignee</span>
+        <span class="w-20">Priority</span>
+        <span class="w-28 text-right">AI cost</span>
+      </div>
+
+      {
+        tickets.map((t) => (
+          <div class="border-t border-rule bg-white px-5 py-3.5 first:border-t-0 sm:border-t">
+            <div class="flex items-center gap-3 sm:hidden">
+              <span
+                class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white"
+                style={`background:${typeIcon[t.type].bg}`}
+              >
+                {typeIcon[t.type].label}
+              </span>
+              <span class="num text-sm font-semibold text-ink-soft">{t.key}</span>
+              <span class={`rounded px-2 py-1 text-xs font-semibold ${statusStyle[t.status]}`}>{t.status}</span>
+              <span class="ml-auto text-right">
+                <span class={`num block text-sm font-semibold ${t.flagged ? 'text-[#c0311a]' : 'text-[#1a7f4e]'}`}>
+                  {t.cost}
+                </span>
+              </span>
+            </div>
+            <p class="mt-2 text-sm text-ink sm:hidden">{t.summary}</p>
+            {t.costNote && <p class="mt-1 text-[11px] text-ink-faint sm:hidden">{t.costNote}</p>}
+
+            <div class="hidden items-center gap-4 sm:flex">
+              <span class="w-16">
+                <span
+                  class="inline-flex h-5 w-5 items-center justify-center rounded text-[11px] font-bold text-white"
+                  style={`background:${typeIcon[t.type].bg}`}
+                >
+                  {typeIcon[t.type].label}
+                </span>
+              </span>
+              <span class="num w-20 text-sm font-semibold text-ink-soft">{t.key}</span>
+              <span class="flex-1 truncate pr-4 text-sm text-ink">{t.summary}</span>
+              <span class="w-28">
+                <span class={`rounded px-2 py-1 text-xs font-semibold ${statusStyle[t.status]}`}>{t.status}</span>
+              </span>
+              <span class="w-24">
+                <span
+                  class="flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold text-white"
+                  style={`background:${t.avatarColor}`}
+                >
+                  {t.assignee.replace('.', '').slice(0, 2)}
+                </span>
+              </span>
+              <span class="w-20 text-sm font-semibold" style={`color:${priorityStyle[t.priority].color}`}>
+                {priorityStyle[t.priority].glyph} {t.priority}
+              </span>
+              <span class="w-28 text-right">
+                <span class={`num block text-sm font-semibold ${t.flagged ? 'text-[#c0311a]' : 'text-[#1a7f4e]'}`}>
+                  {t.cost}
+                </span>
+                {t.costNote && <span class="block text-[11px] text-ink-faint">{t.costNote}</span>}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

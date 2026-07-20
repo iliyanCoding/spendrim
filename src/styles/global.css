@@ -2,32 +2,26 @@
 
 @theme {
   /* ─────────────────────────────────────────────
-     LIGHT EDITORIAL LEDGER
-     Ink on warm paper. One rust accent. Thin rules.
+     WARM EDITORIAL
+     Serif headlines on warm cream, one orange accent.
      ───────────────────────────────────────────── */
 
-  /* Paper & panels */
-  --color-paper: #f3eee2; /* warm cream page */
-  --color-panel: #ede6d6; /* slightly deeper inset */
-  --color-panel-2: #e6ddca; /* deepest, for table stripes */
+  --color-paper: #faf8f4; /* warm cream page */
 
   /* Ink (warm near-black, not pure black) */
-  --color-ink: #1d1712; /* primary text */
-  --color-ink-soft: #574e42; /* secondary text */
-  --color-ink-faint: #8a7f6d; /* tertiary / labels */
+  --color-ink: #1c1f1c; /* primary text */
+  --color-ink-soft: #4a4e46; /* secondary text */
+  --color-ink-faint: #8a8d85; /* tertiary / labels */
 
-  /* Rules — the structural language of a ledger */
-  --color-rule: rgba(29, 23, 18, 0.16);
-  --color-rule-strong: rgba(29, 23, 18, 0.42);
+  --color-rule: #e7e2d8;
 
-  /* Accent — rust, used sparingly */
-  --color-accent: #b8442a;
-  --color-accent-deep: #8f3018;
-  --color-positive: #3c6048; /* muted forest for savings */
+  /* Accent — orange, used sparingly */
+  --color-accent: #e15b2e;
+  --color-accent-deep: #c94e24;
 
-  /* Type — a coherent IBM Plex system: engineered, corporate, precise.
-     Headings + body: IBM Plex Sans. Figures: IBM Plex Mono. */
+  /* Type — serif headlines (Source Serif 4), IBM Plex Sans body, Plex Mono figures. */
   --font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: 'Source Serif 4', ui-serif, Georgia, serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', 'Menlo', monospace;
 }
 
@@ -49,19 +43,12 @@ body {
   color: var(--color-paper);
 }
 
-/* Display — IBM Plex Sans, tightened for headline confidence. */
+/* Display — Source Serif 4 headlines. */
 .display {
-  font-family: var(--font-sans);
-  font-weight: 560;
-  letter-spacing: -0.025em;
-  line-height: 1.04;
-}
-
-/* Emphasis inside headings — weight + accent, not italic (grotesk stays upright). */
-.display-italic {
-  font-style: normal;
-  font-weight: 620;
-  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 /* Small-caps editorial label */
