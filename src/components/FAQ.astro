@@ -4,34 +4,43 @@ import SectionLabel from './SectionLabel.astro';
 
 const items = [
   {
-    q: 'How is the sprint priced?',
-    a: 'Fixed fee, quoted after the free waste audit and tied to your current spend — not hourly. If we don’t hit the agreed savings percentage within 30 days of handoff, you don’t pay. The audit call itself is free and carries no obligation.',
+    q: 'How is the 30-day sprint priced?',
+    a: "It's a fixed price, quoted after the free audit, tied to the size of your current spend and the number of levers we find. No hourly billing.",
   },
   {
-    q: 'Do you need access to our prompts and data?',
-    a: 'We work from usage metadata — token counts, cache hit rates, model and endpoint mix, request traces — not your training data or customer content. Where prompt inspection is needed, it happens in your environment under your access controls, and we sign an NDA before the audit.',
+    q: "What if the audit doesn't find much to fix?",
+    a: 'Then we tell you that directly and you walk away with a clear picture of your spend at no cost, no pressure to buy the sprint.',
   },
   {
-    q: 'Which providers do you support?',
-    a: 'We’re model-agnostic: Claude (Anthropic), OpenAI, and Gemini, plus open-weight models behind vLLM or Bedrock. The levers — caching, compaction, trimming, guardrails — apply anywhere tokens are billed.',
+    q: 'Do you need access to our production systems?',
+    a: "We need read access to usage and billing data, plus a way to ship configuration changes with your team's sign-off. We scope exact access during the proposal.",
   },
   {
-    q: 'How much engineering effort does this take from our team?',
-    a: 'Week 2 is done-for-you: we open the PRs, your team reviews them. Most clients budget a few hours of review per week plus one 30-minute sync. Attribution instrumentation is a thin middleware layer, not a re-architecture.',
+    q: 'What happens after the 30 days?',
+    a: 'Your dashboard and alerts keep running. You can bring monitoring in-house, or keep us on a simple monthly retainer to keep watching.',
   },
   {
-    q: 'How does the guarantee actually work?',
-    a: 'In week 1 we sign off on a measured baseline and a target savings percentage. Thirty days after handoff, we compare like-for-like usage against that baseline. Hit the target, the fee stands; miss it, you don’t pay. Terms are in the engagement letter — no asterisks.',
+    q: 'Who is this for?',
+    a: "Teams spending meaningfully on LLM APIs, inference infrastructure, or AI tooling who suspect, but can't yet prove, that some of it is waste.",
   },
 ];
 ---
 
 <section id="faq" class="border-t border-rule py-20 sm:py-28">
   <div class="mx-auto max-w-3xl px-6 sm:px-10">
-    <SectionLabel index="07" label="Fair questions" />
-    <h2 class="display mt-8 text-[2.25rem] leading-[1.05] sm:text-[3rem]">
-      Before you <em class="display-italic">ask</em>.
-    </h2>
+    <SectionLabel index="05" label="Questions" />
+    <h2 class="display mt-8 text-[2.25rem] leading-[1.05] sm:text-[3rem]">Questions</h2>
+
+    <div class="relative mt-10 h-56 overflow-hidden rounded-lg sm:h-64">
+      <img
+        src="https://images.pexels.com/photos/5325104/pexels-photo-5325104.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Team talking through AI spend questions"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent"></div>
+      <div class="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
+    </div>
+
     <div class="mt-12">
       <Accordion items={items} />
     </div>

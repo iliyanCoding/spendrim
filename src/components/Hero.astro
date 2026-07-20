@@ -1,141 +1,39 @@
 ---
 ---
 
-<section id="top" class="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
-  <div class="mx-auto max-w-5xl px-6 sm:px-10">
-    <p class="label text-ink-faint">AI Cost Attribution &middot; Est. for teams over $10k / mo</p>
+<section id="top" class="relative flex min-h-[560px] items-center overflow-hidden">
+  <img
+    src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=2000"
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/50"></div>
 
-    <h1 class="display mt-7 max-w-4xl text-[2.75rem] leading-[1.0] sm:text-[4rem] lg:text-[4.75rem]">
-      Cut your AI spend by <span class="text-accent">a third</span>. Know where <span class="word-every">every<svg
-          class="word-every-line"
-          viewBox="0 0 120 12"
-          preserveAspectRatio="none"
-          aria-hidden="true"
+  <div class="relative z-10 mx-auto w-full max-w-5xl px-6 py-28 sm:px-10 sm:py-32">
+    <div class="max-w-xl">
+      <p class="label text-[#f6b48e]">AI Cost Optimization &amp; Observability</p>
+      <h1 class="display mt-6 text-[2.5rem] leading-[1.05] text-paper sm:text-[3.75rem]">
+        Lower your AI spend by up to 30% and know where every dollar goes.
+      </h1>
+      <p class="mt-6 max-w-md text-lg leading-relaxed text-[#d7dbd2]">
+        Spendrim finds exactly where AI spend disappears, fixes it in 30 days, and keeps watching after we
+        leave, so the savings stick.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-6">
+        <a
+          href="#audit"
+          class="bg-accent px-6 py-3.5 font-semibold text-paper transition-colors hover:bg-accent-deep"
         >
-          <path
-            d="M3 9 C 20 3, 40 11, 60 7 S 100 3, 117 8"
-            pathLength="100"
-            fill="none"
-            stroke="var(--color-accent)"
-            stroke-width="3.5"
-            stroke-linecap="round"></path>
-        </svg></span> dollar goes.
-    </h1>
-
-    <div class="mt-10 grid gap-12 border-t border-rule pt-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-      <div>
-        <p class="max-w-md text-lg leading-relaxed text-ink-soft">
-          We audit, optimize, and monitor your AI costs with ticket-level attribution — so you finally
-          know which features, developers, and initiatives are burning the budget.
-        </p>
-        <div class="mt-9 flex flex-wrap items-center gap-6">
-          <a
-            href="#book"
-            class="bg-accent px-6 py-3 font-medium text-paper transition-colors hover:bg-accent-deep"
-          >
-            Request a free waste audit
-          </a>
-          <a
-            href="#attribution"
-            class="group inline-flex items-center gap-1.5 border-b border-ink pb-0.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
-          >
-            See how it works
-            <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-          </a>
-        </div>
+          Book a Free Audit
+        </a>
+        <a
+          href="#offer"
+          class="group inline-flex items-center gap-1.5 border-b border-paper pb-0.5 text-sm font-semibold text-paper transition-colors hover:border-accent hover:text-accent"
+        >
+          See the 30-day offer
+          <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+        </a>
       </div>
-
-      <!-- Fig. 1 — spend trajectory, drawn as a fine ink plate -->
-      <figure class="lg:pl-10 lg:border-l lg:border-rule">
-        <svg viewBox="0 0 560 400" class="w-full" role="img" aria-label="AI spend trajectory curving down into a basketball rim">
-          <defs>
-            <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="var(--color-accent)"></stop>
-              <stop offset="100%" stop-color="var(--color-positive)"></stop>
-            </linearGradient>
-          </defs>
-
-          <!-- faint court arc -->
-          <path d="M 20 40 A 560 560 0 0 1 540 40" fill="none" stroke="var(--color-ink)" stroke-opacity="0.10" stroke-width="1.5"></path>
-
-          <!-- start marker: current spend -->
-          <g>
-            <circle cx="60" cy="82" r="4.5" fill="var(--color-accent)"></circle>
-            <text x="60" y="56" class="label" fill="var(--color-ink-faint)" font-size="11" letter-spacing="1.6">Before</text>
-            <text x="60" y="74" class="num" fill="var(--color-ink)" font-size="17" font-weight="600">$68,400/mo</text>
-          </g>
-
-          <!-- the arc -->
-          <path
-            class="arc-path"
-            d="M 60 82 C 220 62, 360 112, 430 288"
-            fill="none"
-            stroke="url(#arcGrad)"
-            stroke-width="2.5"
-            stroke-linecap="round"
-          ></path>
-
-          <!-- ball dropping through -->
-          <g class="arc-ball">
-            <circle cx="430" cy="288" r="10" fill="var(--color-accent)"></circle>
-            <g stroke="var(--color-paper)" stroke-width="1.2" fill="none" stroke-linecap="round">
-              <path d="M 430 278 v 20"></path>
-              <path d="M 420 288 h 20"></path>
-              <path d="M 422.5 279.5 C 426 283, 426 293, 422.5 296.5"></path>
-              <path d="M 437.5 279.5 C 434 283, 434 293, 437.5 296.5"></path>
-            </g>
-          </g>
-
-          <!-- rim + net -->
-          <g stroke-linecap="round">
-            <path d="M 396 306 h 68" stroke="var(--color-accent)" stroke-width="3.5"></path>
-            <g
-              transform="translate(382 281) scale(2)"
-              stroke="var(--color-ink)"
-              stroke-width="0.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              opacity="0.6"
-              fill="none"
-            >
-              <path d="M17 14.6 L20.5 35.5"></path>
-              <path d="M31 14.6 L27.5 35.5"></path>
-              <path d="M17 14.6 L29.79 21.8 L19.38 28.8 L27.5 35.5"></path>
-              <path d="M31 14.6 L18.21 21.8 L28.62 28.8 L20.5 35.5"></path>
-            </g>
-          </g>
-
-          <!-- end marker: after -->
-          <g>
-            <text x="430" y="378" text-anchor="middle" class="num" fill="var(--color-positive)" font-size="17" font-weight="600">$31,900/mo</text>
-            <text x="430" y="395" text-anchor="middle" class="label" fill="var(--color-ink-faint)" font-size="11" letter-spacing="1.4">After the sprint</text>
-          </g>
-        </svg>
-        <figcaption class="mt-4 flex items-baseline gap-3 border-t border-rule pt-3">
-          <span class="num text-xs text-accent">Fig.1</span>
-          <span class="text-xs text-ink-faint">Spend trajectory across a 21-day reset &mdash; <span class="num text-positive">&minus;53%</span></span>
-        </figcaption>
-      </figure>
     </div>
   </div>
 </section>
-
-<style>
-  .word-every {
-    position: relative;
-    display: inline-block;
-  }
-
-  .word-every-line {
-    position: absolute;
-    left: -2%;
-    bottom: -0.08em;
-    width: 104%;
-    height: 0.2em;
-    overflow: visible;
-  }
-
-  .word-every-line path {
-    stroke-dashoffset: 0;
-  }
-</style>

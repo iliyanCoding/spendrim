@@ -1,0 +1,58 @@
+---
+import SectionLabel from './SectionLabel.astro';
+
+const steps = [
+  {
+    title: 'Free audit call',
+    body: '30 minutes. We look at your bills, model usage, and infrastructure, and give you a rough savings estimate on the spot.',
+  },
+  {
+    title: 'Fixed-scope proposal',
+    body: "If it's worth doing, you get a fixed price for the 30-day sprint and a clear list of what changes.",
+  },
+  {
+    title: 'We do the work',
+    body: 'Your team stays focused on the product. We handle the audit, the changes, and the dashboard build.',
+  },
+  {
+    title: 'Handoff and monitoring',
+    body: 'You get a live dashboard, a short training session, and 30 days of us watching for regressions.',
+  },
+];
+---
+
+<section id="process" class="border-t border-b border-rule bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl px-6 sm:px-10">
+    <div class="grid gap-14 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionLabel index="04" label="How it works" />
+        <h2 class="display mt-8 text-[2rem] leading-[1.05] sm:text-[2.5rem]">
+          A <span class="text-accent">free audit</span>, then a straight answer.
+        </h2>
+        <p class="mt-6 text-base leading-relaxed text-ink-soft">
+          We are going to look at your usage and tell you honestly whether the sprint is worth it for you.
+        </p>
+        <div class="mt-9 h-[280px] overflow-hidden rounded-lg">
+          <img
+            src="https://images.pexels.com/photos/4342498/pexels-photo-4342498.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Audit call walking through AI spend"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+      <div>
+        {
+          steps.map((s, i) => (
+            <div class="flex gap-6 border-t border-rule py-6 last:border-b">
+              <span class="display w-8 shrink-0 text-xl text-accent">{i + 1}</span>
+              <div>
+                <h3 class="text-lg font-semibold">{s.title}</h3>
+                <p class="mt-1.5 leading-relaxed text-ink-soft">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

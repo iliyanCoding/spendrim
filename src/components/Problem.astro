@@ -1,43 +1,33 @@
 ---
 import SectionLabel from './SectionLabel.astro';
-
-const pains = [
-  {
-    title: 'No attribution',
-    body: "You don't know which tickets or features cost the most. Your invoice is one number; your codebase is a thousand decisions.",
-  },
-  {
-    title: 'Silent drains',
-    body: 'Cache misses, context bloat, and stale tool results quietly burn budget on every single request — and never show up in a dashboard.',
-  },
-  {
-    title: 'No guardrails',
-    body: 'One bad agent loop can run all night. Without spend limits and alerts, the first warning you get is a five-figure surprise.',
-  },
-];
 ---
 
-<section id="problem" class="border-t border-rule py-20 sm:py-28">
+<section id="problem" class="border-t border-b border-rule bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-5xl px-6 sm:px-10">
     <SectionLabel index="01" label="The problem" />
     <h2 class="display mt-8 max-w-2xl text-[2.25rem] leading-[1.05] sm:text-[3rem]">
-      Your AI bill is a <em class="display-italic">black box</em>.
+      Finance gets one invoice a month and <span class="text-accent">nobody</span> can tell them which feature
+      wrote it.
     </h2>
 
-    <div class="mt-14">
-      {
-        pains.map((p, i) => (
-          <div
-            class="grid gap-x-8 gap-y-2 border-t border-rule py-8 sm:grid-cols-[3rem_1fr] last:border-b"
-          >
-            <span class="num text-lg text-accent">0{i + 1}</span>
-            <div class="grid gap-x-10 gap-y-2 sm:grid-cols-[14rem_1fr]">
-              <h3 class="display text-2xl">{p.title}</h3>
-              <p class="max-w-xl leading-relaxed text-ink-soft">{p.body}</p>
-            </div>
-          </div>
-        ))
-      }
+    <div class="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-ink-soft">
+      <p>
+        The root cause is that AI spend arrives detached from what caused it. You can't downgrade a model you can't
+        trace, or hold a team to a number nobody can attribute to them. Optimizations becomes a guess,
+        and guesses don't survive contact with a real bill. 
+      </p>
+      <p class="font-semibold text-ink">
+        We are going to <mark class="rounded bg-accent/15 px-1 text-accent-deep">fix attribution first</mark> and
+        the rest stops being mysterious.
+      </p>
+    </div>
+
+    <div class="mt-14 h-[280px] overflow-hidden rounded-lg sm:h-[340px]">
+      <img
+        src="https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Server infrastructure running AI workloads"
+        class="h-full w-full object-cover"
+      />
     </div>
   </div>
 </section>

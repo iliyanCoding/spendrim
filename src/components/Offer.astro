@@ -1,61 +1,65 @@
 ---
 import SectionLabel from './SectionLabel.astro';
+import Guarantee from './Guarantee.astro';
 
 const weeks = [
   {
-    label: 'Week 01',
-    name: 'Scout',
-    items: ['Full spend audit across providers', 'Waste map: where every wasted dollar goes', 'Signed savings estimate, in writing'],
+    label: 'Week 1',
+    title: 'Audit & waste map',
+    items: [
+      'Full review of model usage, infra, and API spend',
+      'Waste map showing exactly where money leaks and where you could <mark class="rounded bg-accent/15 px-1 font-semibold text-accent-deep">achieve the same with less</mark>.',
+      'Concrete savings estimate, in writing',
+    ],
   },
   {
-    label: 'Week 02',
-    name: 'Execute',
-    items: ['All four levers implemented', 'Done-for-you — your team keeps shipping', 'Before / after measured per change'],
+    label: 'Week 2 & 3',
+    title: 'Implementation',
+    items: [
+      'All identified levers bundled and implemented',
+      'Model, routing, and infra changes shipped',
+      'Done-for-you, your team stays hands-off',
+    ],
   },
   {
-    label: 'Week 03',
-    name: 'Handoff',
-    items: ['Attribution dashboard live', 'Team training on cost-aware patterns', '30-day monitoring begins'],
+    label: 'Week 4',
+    title: 'Handoff & monitoring',
+    items: [
+      'Live cost dashboard handed to your team',
+      'Short training session on how to read it',
+      '30-day monitoring starts for regressions',
+    ],
   },
 ];
 ---
 
-<section id="offer" class="border-t border-rule py-20 sm:py-28">
+<section id="offer" class="py-20 sm:py-28">
   <div class="mx-auto max-w-5xl px-6 sm:px-10">
-    <SectionLabel index="04" label="The offer" />
-    <h2 class="display mt-8 text-[2.25rem] leading-[1.05] sm:text-[3rem]">
-      AI Spend Reset — a <span class="num text-[0.85em]">21</span>-day sprint.
-    </h2>
+    <SectionLabel index="03" label="The offer" />
+    <h2 class="display mt-8 text-[2.25rem] leading-[1.05] sm:text-[3rem]">AI Spend Reset: 30-Day Sprint</h2>
     <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-      Three weeks from black box to line items. Fixed scope, fixed timeline, measured outcome.
+      One engagement, done for you. We audit, we implement, we hand you a live dashboard, and we keep
+      monitoring for a full month after.
     </p>
 
-    <div class="mt-14 grid gap-x-14 gap-y-10 sm:grid-cols-3">
+    <div class="mt-14 grid gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-3">
       {
-        weeks.map((w, i) => (
-          <div class="border-t-2 border-ink pt-5">
-            <div class="flex items-baseline justify-between">
-              <span class="display text-xl">{w.name}</span>
-              <span class="num text-xs text-ink-faint">{w.label}</span>
-            </div>
-            <ul class="mt-5 space-y-3">
+        weeks.map((w) => (
+          <div class="bg-white p-8 sm:p-10">
+            <p class="label text-ink-faint">{w.label}</p>
+            <h3 class="display mt-3 text-xl">{w.title}</h3>
+            <div class="mt-4">
               {w.items.map((item) => (
-                <li class="flex items-baseline gap-3 border-t border-rule pt-3 text-sm leading-relaxed text-ink-soft">
-                  <span class="text-accent">&mdash;</span>
-                  <span>{item}</span>
-                </li>
+                <p class="border-t border-rule py-2.5 text-sm leading-relaxed text-ink-soft" set:html={item} />
               ))}
-            </ul>
+            </div>
           </div>
         ))
       }
     </div>
 
-    <div class="mt-16 border-t border-b border-rule py-10 text-center">
-      <p class="display mx-auto max-w-2xl text-[1.75rem] leading-[1.2] sm:text-[2.25rem]">
-        Hit the agreed savings figure in <span class="num text-[0.8em]">30</span> days —
-        <em class="display-italic text-accent"> or you don't pay.</em>
-      </p>
+    <div class="mt-11">
+      <Guarantee />
     </div>
   </div>
 </section>
