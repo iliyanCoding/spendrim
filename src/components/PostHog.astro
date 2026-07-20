@@ -6,5 +6,27 @@
   posthog.init('phc_to545NS3Ckh46XEKx599Y5R3Vu5ixAyDLpqE2AsSz7as', {
     api_host: 'https://eu.i.posthog.com',
     person_profiles: 'identified_only',
-  })
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const link = target.closest('a[href="#audit"]');
+    if (!link) return;
+    posthog.capture('book_audit_clicked', {
+      label: (link.textContent || '').trim(),
+      location: window.location.pathname,
+    });
+  });
+
+  const typedFields = new Set();
+  document.addEventListener('input', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement)) return;
+    if (!target.closest('#cta-form')) return;
+    const fieldName = target.name || target.id;
+    if (!fieldName || typedFields.has(fieldName)) return;
+    typedFields.add(fieldName);
+    posthog.capture('audit_form_field_typed', { field: fieldName });
+  });
 </script>
