@@ -1,5 +1,6 @@
 ---
 import SectionLabel from './SectionLabel.astro';
+import Guarantee from './Guarantee.astro';
 
 const weeks = [
   {
@@ -57,26 +58,8 @@ const weeks = [
       }
     </div>
 
-    <div class="relative mt-11 flex flex-wrap items-center justify-between gap-6 overflow-hidden rounded-lg p-9 sm:p-10">
-      <img
-        src="https://images.pexels.com/photos/5203849/pexels-photo-5203849.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        alt=""
-        class="absolute inset-0 h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 bg-ink/85"></div>
-      <div class="relative z-10">
-        <p class="display text-xl text-paper">Then observability keeps running.</p>
-        <p class="mt-2 max-w-md text-sm leading-relaxed text-[#d7dbd2]">
-          After the 30 days, your dashboard and alerts stay live. We can keep watching monthly, or hand it
-          fully to your team.
-        </p>
-      </div>
-      <a
-        href="#audit"
-        class="relative z-10 bg-paper px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-[#f6d9c9]"
-      >
-        Book a Free Audit
-      </a>
+    <div class="mt-11">
+      <Guarantee />
     </div>
   </div>
 </section>

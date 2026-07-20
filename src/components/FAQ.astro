@@ -30,6 +30,17 @@ const items = [
   <div class="mx-auto max-w-3xl px-6 sm:px-10">
     <SectionLabel index="05" label="Questions" />
     <h2 class="display mt-8 text-[2.25rem] leading-[1.05] sm:text-[3rem]">Questions</h2>
+
+    <div class="relative mt-10 h-56 overflow-hidden rounded-lg sm:h-64">
+      <img
+        src="https://images.pexels.com/photos/5325104/pexels-photo-5325104.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Team talking through AI spend questions"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent"></div>
+      <div class="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
+    </div>
+
     <div class="mt-12">
       <Accordion items={items} />
     </div>
