@@ -139,7 +139,7 @@ import SectionLabel from './SectionLabel.astro';
         }
         p(cal, ar);
       };
-    })(window as any, 'https://app.cal.com/embed/embed.js', 'init');
+    })(window as any, 'https://app.cal.eu/embed/embed.js', 'init');
   }
 
   function showScheduler(data: FormData) {
@@ -156,11 +156,11 @@ import SectionLabel from './SectionLabel.astro';
 
     loadCal();
     const Cal = (window as any).Cal;
-    Cal('init', 'audit', { origin: 'https://app.cal.com' });
+    Cal('init', 'audit', { origin: 'https://app.cal.eu' });
     Cal.ns.audit('inline', {
       elementOrSelector: '#cal-inline',
       config: { layout: 'month_view', name, email, notes },
-      calLink: 'bsimandoff',
+      calLink: 'spendrim/free-ai-spend-audit',
     });
     Cal.ns.audit('ui', { hideEventTypeDetails: false, layout: 'month_view' });
   }
