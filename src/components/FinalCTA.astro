@@ -111,6 +111,9 @@ import SectionLabel from './SectionLabel.astro';
   const scheduleName = document.getElementById('cta-schedule-name')!;
   const error = document.getElementById('cta-error')!;
 
+  const track = (event: string, props?: Record<string, unknown>) =>
+    (window as any).posthog?.capture(event, props);
+
   let calReady = false;
 
   function loadCal() {
@@ -163,6 +166,10 @@ import SectionLabel from './SectionLabel.astro';
       calLink: 'spendrim/free-ai-spend-audit',
     });
     Cal.ns.audit('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+    Cal.ns.audit('on', {
+      action: 'bookingSuccessful',
+      callback: () => track('booking_completed'),
+    });
   }
 
   form.addEventListener('submit', async (event) => {
@@ -179,8 +186,20 @@ import SectionLabel from './SectionLabel.astro';
         headers: { Accept: 'application/json' },
       });
       if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+
+      const email = (data.get('email') as string) || undefined;
+      if (email) {
+        (window as any).posthog?.identify(email, {
+          name: data.get('name'),
+          company: data.get('company'),
+        });
+      }
+      track('audit_form_submitted');
+
       showScheduler(data);
+      track('scheduler_viewed');
     } catch {
+      track('audit_form_error');
       error.hidden = false;
       button.disabled = false;
     }
